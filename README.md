@@ -55,7 +55,8 @@ graph LR
 
 수집된 이종 데이터를 통합하고 RAG 기반으로 인사이트를 도출합니다.
 
-```mermaid
+```
+mermaid
 flowchart TD
     Raw[Raw Data] -->|NLLB Translation| Stat[1. 통계적 속성 추출]
     Stat --> Candidate[2. 키워드/토큰 분석]
