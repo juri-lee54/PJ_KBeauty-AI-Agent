@@ -37,10 +37,48 @@
 
 ---
 
-## 🤖 AI Agent 구조 및 아키텍처 (Architecture)
+## 🤖 AI Agent 구조 및 기능 (Architecture)
 
-### 1. 전체 파이프라인 (Overview)
+### 1. 주요 기능(IA)
+![IA 구조도](./IA.png)
+- 👤 사용자 정보
+  - 직무(Marketing, R&I 등) 기반 큐레이션 및 이메일 리포트 설정
+- 🏠 홈 (Home)
+  - 금주 기회 시장: 인스타 해시태그 급상승/신규 유입 Top 3
+  - 사용자 니즈: 올리브영 리뷰 기반 핵심 니즈
+  - Rising Products: Top 30 진입 및 급상승 제품 추적
+- 🔭 기회 탐색
+  - 신규 진입 기회: 'Glass Skin' 등 신규 용어 및 급증 니즈 식별
+  - 리스크 대응: 부정 키워드 집계, 리스크 요인 및 사전 대응책 제안
+- 🌏 국가별 인사이트
+  - 시장 분석: 국가별 공통 니즈 vs 차별화 니즈 비교
+  -  제품 스펙: 상위 제품의 성분/제형/효과 분석 및 자사 제품 비교
+- 🔔 아카이브
+  - 뉴스레터: 주간 요약, 신규 트렌드 정기 발송
+  - 리포트: 주제/기간별 열람 및 맞춤형 다운로드
+
+### 2. 데이터 구조 및 활용 (Data Details)
+
+#### 1) 카테고리 분류 기준 (Category Standard)
+
+Agent는 `oliveyoung_product` 데이터를 기준으로 **9종의 Sub Category**를 기본 분석 단위로 사용합니다.
+
+| Major Category | **Sub Category (Agent Standard)** |
+| --- | --- |
+| **Skincare** | `Moisturizers`, `Cleansers` |
+| **Makeup** | `Face`, `Eye`, `Lip`, `Nail` |
+| **Others** | `All Masks`, `All Suncare`, `All Hair` |
+
+#### 2) 주요 데이터 속성
+
+* **Instagram:** `#Kbeauty` 해시태그 기반 실시간 트렌드 및 급상승 키워드
+* **YouTube:** 영상 메타데이터 기반 장기적 인지도 및 인기 제품(Hot Item)
+* **Olive Young:** 리뷰 및 평점 기반 소비자 니즈, 제품 성분/제형 상세 속성
+
+
+### 3. 전체 파이프라인 (Overview)
 수집부터 실행 제안(이메일 발송)까지 전 과정을 수행하는 구조입니다.
+![AI AGENT Architecture](./AI_AGENT_Architecture.png)
 
 ```
 mermaid
@@ -51,7 +89,7 @@ graph LR
     D -->|SMTP| E[User Email<br/>(Actionable Report)]
 ```
 
-### 2. 상세 분석 로직
+### 4. 상세 분석 로직
 
 수집된 이종 데이터를 통합하고 RAG 기반으로 인사이트를 도출합니다.
 
@@ -154,24 +192,4 @@ python run_newsletter.py
 ```
 
 * 실행 결과로 `dist/` 폴더에 `newsletter_preview_YYYY_MM_DD.html` 파일이 생성되어, 발송된 내용을 미리보기 할 수 있습니다.
-
----
-
-## 📊 데이터 구조 및 활용 (Data Details)
-
-### 카테고리 분류 기준 (Category Standard)
-
-Agent는 `oliveyoung_product` 데이터를 기준으로 **9종의 Sub Category**를 기본 분석 단위로 사용합니다.
-
-| Major Category | **Sub Category (Agent Standard)** |
-| --- | --- |
-| **Skincare** | `Moisturizers`, `Cleansers` |
-| **Makeup** | `Face`, `Eye`, `Lip`, `Nail` |
-| **Others** | `All Masks`, `All Suncare`, `All Hair` |
-
-### 주요 데이터 속성
-
-* **Instagram:** `#Kbeauty` 해시태그 기반 실시간 트렌드 및 급상승 키워드
-* **YouTube:** 영상 메타데이터 기반 장기적 인지도 및 인기 제품(Hot Item)
-* **Olive Young:** 리뷰 및 평점 기반 소비자 니즈, 제품 성분/제형 상세 속성
 
