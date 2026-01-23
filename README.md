@@ -48,7 +48,6 @@ graph LR
     B -->|Insights| C{Insight Agent}
     C -->|Construct| D[Newsletter Builder]
     D -->|SMTP| E[User Email<br/>(Actionable Report)]
-
 ```
 
 ### 2. 상세 분석 로직
@@ -62,7 +61,6 @@ flowchart TD
     Candidate --> Sentiment[3. 부정 이슈 검출<br>(BERT Sentiment)]
     Sentiment --> RAG[4. RAG 기반 인사이트 생성<br>(LLM Fact Check)]
     RAG --> Report[5. 국가별 통합 리포트 생성]
-
 ```
 
 * **Data Pipeline:** Selenium & BeautifulSoup (OliveYoung), Official APIs (YouTube, Instagram)
@@ -175,5 +173,3 @@ Agent는 `oliveyoung_product` 데이터를 기준으로 **9종의 Sub Category**
 * **YouTube:** 영상 메타데이터 기반 장기적 인지도 및 인기 제품(Hot Item)
 * **Olive Young:** 리뷰 및 평점 기반 소비자 니즈, 제품 성분/제형 상세 속성
 
-
-```
