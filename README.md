@@ -42,7 +42,8 @@
 ### 1. 전체 파이프라인 (Overview)
 수집부터 실행 제안(이메일 발송)까지 전 과정을 수행하는 구조입니다.
 
-```mermaid
+```
+mermaid
 graph LR
     A[Data Sources<br/>(Insta, YT, OliveYoung)] -->|Collecting| B(Data Processing<br/>& AI Analysis)
     B -->|Insights| C{Insight Agent}
